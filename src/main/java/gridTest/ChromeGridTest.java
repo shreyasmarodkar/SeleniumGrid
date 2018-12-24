@@ -21,6 +21,9 @@ public class ChromeGridTest {
 	ChromeOptions options;
 	String hubUrl = "http://192.168.2.181:4444/wd/hub";
 	
+	
+	//To start hub - java -jar selenium-server-standalone-3.141.59.jar -role hub
+	//To start node - java -Dwebdriver.chrome.driver="C:\SeleniumGrid\chromedriver.exe" -jar selenium-server-standalone-3.141.59.jar -role node -hub http://192.168.2.181:4444/grid/register
 	@BeforeMethod
 	public void setUp(){
 		//WebDriverManager.chromedriver().setup();
@@ -36,9 +39,10 @@ public class ChromeGridTest {
 	}
 	
 	@Test
-	public void gridTest() throws MalformedURLException{
+	public void gridTest() throws MalformedURLException, InterruptedException{
 		driver = new RemoteWebDriver(new URL(hubUrl), options);
-		driver.get("https://www.maharashtratime.com");
+		driver.get("https://www.github.com");
+		Thread.sleep(5000);
 		System.out.println(driver.getTitle());
 	}
 	
